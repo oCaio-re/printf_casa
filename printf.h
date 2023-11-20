@@ -1,40 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   printf.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ocaio-re <ocaio-re@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/20 11:36:25 by ocaio-re          #+#    #+#             */
-/*   Updated: 2023/11/20 11:36:28 by ocaio-re         ###   ########.fr       */
+/*   Created: 2023/11/20 11:38:43 by ocaio-re          #+#    #+#             */
+/*   Updated: 2023/11/20 11:38:45 by ocaio-re         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
 
-int	ft_printf(const char *str, ...)
-{
-	va_list	info;
-	int		i;
-	int		ret;
+#ifndef PRINTF_H
+# define PRINTF_H
 
-	va_start(info, str);
-	i = 0;
-	ret = 0;
-	while (str[i])
-	{
-		if (str[i] == '%')
-		{
-			i++;
-			ret += ft_convert(&str[i], info);
-		}
-		else
-		{
-			write(1, &str[i], 1);
-			ret++;
-		}
-		i++;
-	}
-	va_end(info);
-	return (ret);
-}
+# include <unistd.h>
+# include <stdarg.h>
+# include <stdio.h>
+
+int	ft_printf(const char *str, ...);
+int	ft_convert(const char *str, va_list info);
+int	ft_putchar(unsigned int c);
+int	ft_putstr(char *str);
+int	ft_putnbr(int nb);
+int	ft_unsint(unsigned int nb);
+int	ft_putbase(char *base, unsigned int n);
+int	ft_strlen(const char *str);
+int	ft_pointer(void *str);
+
+#endif
