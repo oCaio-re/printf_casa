@@ -3,5 +3,5 @@
 
 int main(void)
 {
-    ft_printf("%d", 4453);
+    ft_printf("%d\n", 4453);
 }
